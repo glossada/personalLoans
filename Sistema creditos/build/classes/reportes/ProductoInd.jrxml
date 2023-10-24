@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ProductoInd" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2c1844b4-058f-49f9-8558-63a01bb7c162">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idProductos" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     productos.`idProductos` AS productos_idProductos,
+     productos.`marcaProd` AS productos_marcaProd,
+     productos.`nombreProd` AS productos_nombreProd,
+     productos.`codigo` AS productos_codigo
+FROM
+     `productos` productos
+WHERE productos.`idProductos`=$P{idProductos}]]>
+	</queryString>
+	<field name="productos_idProductos" class="java.lang.Integer"/>
+	<field name="productos_marcaProd" class="java.lang.String"/>
+	<field name="productos_nombreProd" class="java.lang.String"/>
+	<field name="productos_codigo" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="12" width="555" height="31" uuid="12649da1-e28c-4011-80e9-da85b158e56e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Listado productos]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="455" y="59" width="100" height="20" uuid="ce2c8846-40c4-4119-b4cf-ffe4dafbe417"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<componentElement>
+				<reportElement x="179" y="42" width="200" height="50" uuid="95f8f4e2-b567-493b-ba82-f077ed0c2160"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="false" checksumRequired="false">
+					<jr:codeExpression><![CDATA[$F{productos_codigo}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<textField>
+				<reportElement x="179" y="72" width="200" height="20" uuid="ef78a2c1-a02e-4eb9-83c5-4b1d9cd29fad"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{productos_codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="179" y="22" width="61" height="20" uuid="768abc50-a488-4e67-b0d1-155992a2da8f"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{productos_marcaProd}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="255" y="22" width="124" height="20" uuid="0bd9cc17-2511-4f80-8a1c-9cd8e150796e"/>
+				<textFieldExpression><![CDATA[$F{productos_nombreProd}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="435" y="34" width="80" height="20" uuid="387ab58e-08ec-49d9-9017-d79d9ca1b911"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="34" width="40" height="20" uuid="288c0182-d03d-47ea-b4e9-903e6661a450"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

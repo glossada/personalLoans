@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReportePresupuesto" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a5e9deb2-9992-4fda-9806-f43b55fd4962">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="66"/>
+	<parameter name="idpresupuesto" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     presupuesto.`idpresupuesto` AS presupuesto_idpresupuesto,
+     presupuesto.`fechaPres` AS presupuesto_fechaPres,
+     presupuesto.`descuento` AS presupuesto_descuento,
+     presupuesto.`subtotal` AS presupuesto_subtotal,
+     presupuesto.`nombre` AS presupuesto_nombre,
+     detallepresupuesto.`iddetallepresupuesto` AS detallepresupuesto_iddetallepresupuesto,
+     detallepresupuesto.`idProd` AS detallepresupuesto_idProd,
+     detallepresupuesto.`idPresComp` AS detallepresupuesto_idPresComp,
+     detallepresupuesto.`prodNom` AS detallepresupuesto_prodNom,
+     detallepresupuesto.`precio` AS detallepresupuesto_precio,
+     detallepresupuesto.`subtotal` AS detallepresupuesto_subtotal,
+     detallepresupuesto.`cant` AS detallepresupuesto_cant
+FROM
+     `presupuesto` presupuesto INNER JOIN `detallepresupuesto` detallepresupuesto ON presupuesto.`idpresupuesto` = detallepresupuesto.`idPresComp`
+WHERE presupuesto.`idpresupuesto`=$P{idpresupuesto}]]>
+	</queryString>
+	<field name="presupuesto_idpresupuesto" class="java.lang.Integer"/>
+	<field name="presupuesto_fechaPres" class="java.lang.String"/>
+	<field name="presupuesto_descuento" class="java.lang.Double"/>
+	<field name="presupuesto_subtotal" class="java.lang.Double"/>
+	<field name="presupuesto_nombre" class="java.lang.String"/>
+	<field name="detallepresupuesto_iddetallepresupuesto" class="java.lang.Integer"/>
+	<field name="detallepresupuesto_idProd" class="java.lang.Integer"/>
+	<field name="detallepresupuesto_idPresComp" class="java.lang.Integer"/>
+	<field name="detallepresupuesto_prodNom" class="java.lang.String"/>
+	<field name="detallepresupuesto_precio" class="java.lang.Double"/>
+	<field name="detallepresupuesto_subtotal" class="java.lang.Double"/>
+	<field name="detallepresupuesto_cant" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="231" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement mode="Transparent" x="245" y="11" width="298" height="122" uuid="a324863b-4ae4-458d-9c6a-329df6540098"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="245" y="21" width="298" height="36" uuid="69de697e-9bfa-48ff-8a47-f01852515bad"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="26" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRESUPUESTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="245" y="103" width="177" height="20" uuid="b4f8e749-9e51-4d71-9a54-0c575f445c15"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Fecha comprobante:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="422" y="103" width="121" height="20" uuid="464e8d8d-76fc-44ed-b95f-b8ffc70d992f"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{presupuesto_fechaPres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="245" y="57" width="298" height="46" uuid="4e9d2bda-e17a-449a-978f-f2ed03cd8b4b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{presupuesto_nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="6" y="145" width="100" height="20" uuid="19ea3196-6127-4d75-9d4a-29cbc301c1f9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Encontranos en:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="205" width="196" height="20" uuid="53b43b2d-290f-475f-918d-ab6867cb5149"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Instagram: @pcprojectstore]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="185" width="196" height="20" uuid="f2b13dbb-509b-40b1-8992-bff8ce56e3f7"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Sitio web: https://pcprojectstore.com.ar/]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="165" width="197" height="20" uuid="eeebf92e-f17b-4b6e-ae4b-78e6be804d38"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Local: Pietropaolo 1963, Reconquista, Sta. Fe]]></text>
+			</staticText>
+			<image>
+				<reportElement x="6" y="0" width="209" height="143" uuid="e1b16fb4-ef76-4538-b8e4-62cf597cef67"/>
+				<imageExpression><![CDATA["C:\\ProyectoJava\\Sistema\\src\\presentacion\\images\\LOGO-Defitivo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="0" width="64" height="20" backcolor="#E3E3E3" uuid="6158a513-fbe2-4a3e-8582-ce683abd74c9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Opaque" x="304" y="0" width="126" height="20" backcolor="#E3E3E3" uuid="7d6f07f5-aa25-411c-9dc1-7b7f5c9de26c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Opaque" x="64" y="0" width="240" height="20" backcolor="#E3E3E3" uuid="fe08fba3-1070-43bb-99a5-98e6f0d8fbd4"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Opaque" x="430" y="0" width="125" height="20" backcolor="#E3E3E3" uuid="b778343f-162c-408b-9dc2-0c75fc573253"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="64" height="20" uuid="d1234c2b-56c1-4999-a704-cc36a365f007"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="64" y="0" width="240" height="20" uuid="bf7b8bf0-002a-4753-89b6-7f3a4a6b44c0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Producto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="304" y="0" width="126" height="20" uuid="2f1ba4a1-c7e3-4f75-adf4-65329f8f2fb1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="0" width="125" height="20" uuid="be316392-8870-49f8-bbf9-b1c19b5a1cc0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Subtotal]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="64" y="0" width="240" height="20" uuid="0604bdfb-caff-4906-b485-8ca1c4863020"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="430" y="0" width="125" height="20" uuid="8811c723-106f-41a7-8c3b-87b6c904e4a5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="304" y="0" width="126" height="20" uuid="384f3bee-7883-4429-a0e7-6a91dd614673"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="0" width="64" height="20" uuid="c2139842-65cf-43ff-9ca6-fcef55fb46c9"/>
+			</rectangle>
+			<textField>
+				<reportElement x="0" y="0" width="64" height="20" uuid="6f198eec-3dec-4a9f-866a-c46d8cc22c81"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{detallepresupuesto_cant}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="69" y="0" width="235" height="20" uuid="edb2f6ea-3af0-4dd0-8c9d-34e7f2211234"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{detallepresupuesto_prodNom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="304" y="0" width="126" height="20" uuid="2155b687-3c79-4cbb-af40-4667be3ada36"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[String.format("%.2f",$F{detallepresupuesto_precio})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="0" width="125" height="20" uuid="897261d7-514f-4ec3-813f-9352f3c1978d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[String.format("%.2f",$F{detallepresupuesto_subtotal})]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="97" splitType="Stretch">
+			<staticText>
+				<reportElement x="372" y="14" width="64" height="20" uuid="1e0d57fd-6c8c-4375-a3a2-10d8b6d13bbd"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Subtotal:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="356" y="34" width="94" height="20" uuid="169bf712-3508-48f3-9291-ab872004ff56"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descuento: %]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="395" y="54" width="41" height="20" uuid="43c9ea35-9a2b-4666-9b8d-6d246b4fa72a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="436" y="14" width="100" height="20" uuid="b3b772da-553b-447b-93b6-802e8ebdf5b5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{presupuesto_subtotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="34" width="100" height="20" uuid="99588d66-e5d6-4f92-b6a1-8cb8e50fcf49"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{presupuesto_descuento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="436" y="54" width="100" height="20" uuid="e429d0aa-1aff-40b9-8117-f65acf79163a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[String.format("%.2f",$F{presupuesto_subtotal}-($F{presupuesto_subtotal}*($F{presupuesto_descuento}/100)))]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
